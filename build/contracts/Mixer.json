@@ -1,0 +1,4194 @@
+{
+  "contractName": "Mixer",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "amt",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "erc20",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_erc20",
+          "type": "address"
+        },
+        {
+          "name": "_amt",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "commitment",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "tgt",
+          "type": "address"
+        }
+      ],
+      "name": "Mix",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_commitment",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "name": "proof",
+              "type": "string"
+            },
+            {
+              "name": "receipent",
+              "type": "address"
+            }
+          ],
+          "name": "_proof",
+          "type": "tuple"
+        }
+      ],
+      "name": "mix",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.1+commit.c8a2cb62\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"amt\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"components\":[{\"name\":\"proof\",\"type\":\"string\"},{\"name\":\"receipent\",\"type\":\"address\"}],\"name\":\"_proof\",\"type\":\"tuple\"}],\"name\":\"mix\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"erc20\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_commitment\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_erc20\",\"type\":\"address\"},{\"name\":\"_amt\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"commitment\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"tgt\",\"type\":\"address\"}],\"name\":\"Mix\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/github/mason/SimpleMixer/contracts/Mixer.sol\":\"Mixer\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/github/mason/SimpleMixer/contracts/IERC20.sol\":{\"keccak256\":\"0xe12f3f304e471be857fa7183be51489c07c39b2dc552c8429c1f740414e235cf\",\"urls\":[\"bzzr://bccc6a7b9a6311b4e05b200403ef91dd536121fcdc766480da81d27c00332843\"]},\"/E/github/mason/SimpleMixer/contracts/Mixer.sol\":{\"keccak256\":\"0x6dd6768d85098ff87dc2121b572dfbe54bca8e50198b136dfeb032ec702f74d1\",\"urls\":[\"bzzr://ac670ae82930c55d3f915284dedc781a7c7d9f67d6e4c2ab1b3b72d277c6ee91\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516040806109d4833981018060405261002f91908101906100a6565b81600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600081905550505061011e565b600061008a8251610102565b905092915050565b600061009e8251610114565b905092915050565b600080604083850312156100b957600080fd5b60006100c78582860161007e565b92505060206100d885828601610092565b9150509250929050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b600061010d826100e2565b9050919050565b6000819050919050565b6108a78061012d6000396000f3fe60806040526004361061005c576000357c01000000000000000000000000000000000000000000000000000000009004806316eab96b14610061578063687777e41461008c578063785e9e86146100b5578063b6b55f25146100e0575b600080fd5b34801561006d57600080fd5b50610076610109565b604051610083919061072c565b60405180910390f35b34801561009857600080fd5b506100b360048036036100ae9190810190610599565b61010f565b005b3480156100c157600080fd5b506100ca610276565b6040516100d791906106f1565b60405180910390f35b3480156100ec57600080fd5b50610107600480360361010291908101906105da565b61029c565b005b60005481565b8061011981610435565b151561012457600080fd5b600082600001518051906020012060019004905060006002600083815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb84602001516000546040518363ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004016101e39291906106c8565b602060405180830381600087803b1580156101fd57600080fd5b505af1158015610211573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506102359190810190610570565b507ff7353f6830c660675d0122c7932ed7cdf239f1ca7ec6c51895c26af04dfc1eeb83602001516040516102699190610676565b60405180910390a1505050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6002600082815260200190815260200160002060009054906101000a900460ff161515156102ff576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102f69061070c565b60405180910390fd5b60016002600083815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd33306000546040518463ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004016103a893929190610691565b602060405180830381600087803b1580156103c257600080fd5b505af11580156103d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103fa9190810190610570565b507f4d6ce1e535dbade1c23defba91e23b8f791ce5edc0cc320257a2b364e4e384268160405161042a919061072c565b60405180910390a150565b6000606082600001519050600081805190602001206001900490506002600082815260200190815260200160002060009054906101000a900460ff1692505050919050565b600061048682356107dc565b905092915050565b600061049a82516107ee565b905092915050565b600082601f83011215156104b557600080fd5b81356104c86104c382610774565b610747565b915080825260208301602083018583830111156104e457600080fd5b6104ef83828461085e565b50505092915050565b60006040828403121561050a57600080fd5b6105146040610747565b9050600082013567ffffffffffffffff81111561053057600080fd5b61053c848285016104a2565b60008301525060206105508482850161047a565b60208301525092915050565b600061056882356107fa565b905092915050565b60006020828403121561058257600080fd5b60006105908482850161048e565b91505092915050565b6000602082840312156105ab57600080fd5b600082013567ffffffffffffffff8111156105c557600080fd5b6105d1848285016104f8565b91505092915050565b6000602082840312156105ec57600080fd5b60006105fa8482850161055c565b91505092915050565b61060c81610804565b82525050565b61061b816107a0565b82525050565b61062a81610816565b82525050565b6000601482527f6475706c696361746520636f6d6d69746d656e740000000000000000000000006020830152604082019050919050565b610670816107d2565b82525050565b600060208201905061068b6000830184610612565b92915050565b60006060820190506106a66000830186610603565b6106b36020830185610612565b6106c06040830184610667565b949350505050565b60006040820190506106dd6000830185610612565b6106ea6020830184610667565b9392505050565b60006020820190506107066000830184610621565b92915050565b6000602082019050818103600083015261072581610630565b9050919050565b60006020820190506107416000830184610667565b92915050565b6000604051905081810181811067ffffffffffffffff8211171561076a57600080fd5b8060405250919050565b600067ffffffffffffffff82111561078b57600080fd5b601f19601f8301169050602081019050919050565b60006107ab826107b2565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60006107e7826107b2565b9050919050565b60008115159050919050565b6000819050919050565b600061080f8261083a565b9050919050565b600061082182610828565b9050919050565b6000610833826107b2565b9050919050565b60006108458261084c565b9050919050565b6000610857826107b2565b9050919050565b8281833760008383015250505056fea265627a7a72305820b0cb90ec7bc2b451997f7b21e217827ab7d31b5c3e59d435fca0ea2ba57fb9996c6578706572696d656e74616cf50037",
+  "deployedBytecode": "0x60806040526004361061005c576000357c01000000000000000000000000000000000000000000000000000000009004806316eab96b14610061578063687777e41461008c578063785e9e86146100b5578063b6b55f25146100e0575b600080fd5b34801561006d57600080fd5b50610076610109565b604051610083919061072c565b60405180910390f35b34801561009857600080fd5b506100b360048036036100ae9190810190610599565b61010f565b005b3480156100c157600080fd5b506100ca610276565b6040516100d791906106f1565b60405180910390f35b3480156100ec57600080fd5b50610107600480360361010291908101906105da565b61029c565b005b60005481565b8061011981610435565b151561012457600080fd5b600082600001518051906020012060019004905060006002600083815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb84602001516000546040518363ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004016101e39291906106c8565b602060405180830381600087803b1580156101fd57600080fd5b505af1158015610211573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506102359190810190610570565b507ff7353f6830c660675d0122c7932ed7cdf239f1ca7ec6c51895c26af04dfc1eeb83602001516040516102699190610676565b60405180910390a1505050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6002600082815260200190815260200160002060009054906101000a900460ff161515156102ff576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016102f69061070c565b60405180910390fd5b60016002600083815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166323b872dd33306000546040518463ffffffff167c01000000000000000000000000000000000000000000000000000000000281526004016103a893929190610691565b602060405180830381600087803b1580156103c257600080fd5b505af11580156103d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103fa9190810190610570565b507f4d6ce1e535dbade1c23defba91e23b8f791ce5edc0cc320257a2b364e4e384268160405161042a919061072c565b60405180910390a150565b6000606082600001519050600081805190602001206001900490506002600082815260200190815260200160002060009054906101000a900460ff1692505050919050565b600061048682356107dc565b905092915050565b600061049a82516107ee565b905092915050565b600082601f83011215156104b557600080fd5b81356104c86104c382610774565b610747565b915080825260208301602083018583830111156104e457600080fd5b6104ef83828461085e565b50505092915050565b60006040828403121561050a57600080fd5b6105146040610747565b9050600082013567ffffffffffffffff81111561053057600080fd5b61053c848285016104a2565b60008301525060206105508482850161047a565b60208301525092915050565b600061056882356107fa565b905092915050565b60006020828403121561058257600080fd5b60006105908482850161048e565b91505092915050565b6000602082840312156105ab57600080fd5b600082013567ffffffffffffffff8111156105c557600080fd5b6105d1848285016104f8565b91505092915050565b6000602082840312156105ec57600080fd5b60006105fa8482850161055c565b91505092915050565b61060c81610804565b82525050565b61061b816107a0565b82525050565b61062a81610816565b82525050565b6000601482527f6475706c696361746520636f6d6d69746d656e740000000000000000000000006020830152604082019050919050565b610670816107d2565b82525050565b600060208201905061068b6000830184610612565b92915050565b60006060820190506106a66000830186610603565b6106b36020830185610612565b6106c06040830184610667565b949350505050565b60006040820190506106dd6000830185610612565b6106ea6020830184610667565b9392505050565b60006020820190506107066000830184610621565b92915050565b6000602082019050818103600083015261072581610630565b9050919050565b60006020820190506107416000830184610667565b92915050565b6000604051905081810181811067ffffffffffffffff8211171561076a57600080fd5b8060405250919050565b600067ffffffffffffffff82111561078b57600080fd5b601f19601f8301169050602081019050919050565b60006107ab826107b2565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60006107e7826107b2565b9050919050565b60008115159050919050565b6000819050919050565b600061080f8261083a565b9050919050565b600061082182610828565b9050919050565b6000610833826107b2565b9050919050565b60006108458261084c565b9050919050565b6000610857826107b2565b9050919050565b8281833760008383015250505056fea265627a7a72305820b0cb90ec7bc2b451997f7b21e217827ab7d31b5c3e59d435fca0ea2ba57fb9996c6578706572696d656e74616cf50037",
+  "sourceMap": "124:1590:2:-;;;478:105;8:9:-1;5:2;;;30:1;27;20:12;5:2;478:105:2;;;;;;;;;;;;;;;;;;;;;;549:6;534:5;;:22;;;;;;;;;;;;;;;;;;572:4;566:3;:10;;;;478:105;;124:1590;;5:122:-1;;83:39;114:6;108:13;83:39;;;74:48;;68:59;;;;;134:122;;212:39;243:6;237:13;212:39;;;203:48;;197:59;;;;;263:399;;;395:2;383:9;374:7;370:23;366:32;363:2;;;411:1;408;401:12;363:2;446:1;463:64;519:7;510:6;499:9;495:22;463:64;;;453:74;;425:108;564:2;582:64;638:7;629:6;618:9;614:22;582:64;;;572:74;;543:109;357:305;;;;;;669:128;;749:42;742:5;738:54;727:65;;721:76;;;;804:105;;873:31;898:5;873:31;;;862:42;;856:53;;;;916:79;;985:5;974:16;;968:27;;;;124:1590:2;;;;;;;",
+  "deployedSourceMap": "124:1590:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;251:15;;8:9:-1;5:2;;;30:1;27;20:12;5:2;251:15:2;;;:::i;:::-;;;;;;;;;;;;;;;;1131:282;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1131:282:2;;;;;;;;;;;;;;;;:::i;:::-;;272:19;;8:9:-1;5:2;;;30:1;27;20:12;5:2;272:19:2;;;:::i;:::-;;;;;;;;;;;;;;;;765:268;;8:9:-1;5:2;;;30:1;27;20:12;5:2;765:268:2;;;;;;;;;;;;;;;;:::i;:::-;;251:15;;;;:::o;1131:282::-;1194:6;658:21;672:6;658:13;:21::i;:::-;650:30;;;;;;;;1211:18;1256:6;:12;;;1240:30;;;;;;1232:39;;;1211:60;;1316:5;1290:11;:23;1302:10;1290:23;;;;;;;;;;;;:31;;;;;;;;;;;;;;;;;;1332:5;;;;;;;;;;;:14;;;1347:6;:16;;;1365:3;;1332:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1332:37:2;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1332:37:2;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1332:37:2;;;;;;;;;;1385:21;1389:6;:16;;;1385:21;;;;;;;;;;;;;;;690:1;1131:282;;:::o;272:19::-;;;;;;;;;;;;;:::o;765:268::-;829:11;:24;841:11;829:24;;;;;;;;;;;;;;;;;;;;;828:25;820:58;;;;;;;;;;;;;;;;;;;;;;;;916:4;889:11;:24;901:11;889:24;;;;;;;;;;;;:31;;;;;;;;;;;;;;;;;;931:5;;;;;;;;;;;:18;;;950:10;970:4;977:3;;931:50;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;931:50:2;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;931:50:2;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;931:50:2;;;;;;;;;;1005:20;1013:11;1005:20;;;;;;;;;;;;;;;765:268;:::o;1419:290::-;1493:4;1565:19;1587:6;:12;;;1565:34;;1609:18;1654:5;1638:23;;;;;;1630:32;;;1609:53;;1679:11;:23;1691:10;1679:23;;;;;;;;;;;;;;;;;;;;;1672:30;;;;1419:290;;;:::o;5:118:-1:-;;72:46;110:6;97:20;72:46;;;63:55;;57:66;;;;;130:116;;205:36;233:6;227:13;205:36;;;196:45;;190:56;;;;;254:434;;352:3;345:4;337:6;333:17;329:27;322:35;319:2;;;370:1;367;360:12;319:2;407:6;394:20;429:61;444:45;482:6;444:45;;;429:61;;;420:70;;510:6;503:5;496:21;546:4;538:6;534:17;579:4;572:5;568:16;614:3;605:6;600:3;596:16;593:25;590:2;;;631:1;628;621:12;590:2;641:41;675:6;670:3;665;641:41;;;312:376;;;;;;;;728:568;;846:4;834:9;829:3;825:19;821:30;818:2;;;864:1;861;854:12;818:2;882:20;897:4;882:20;;;873:29;;981:1;970:9;966:17;953:31;1004:18;996:6;993:30;990:2;;;1036:1;1033;1026:12;990:2;1070:55;1121:3;1112:6;1101:9;1097:22;1070:55;;;1064:3;1057:5;1053:15;1046:80;912:225;1192:2;1225:49;1270:3;1261:6;1250:9;1246:22;1225:49;;;1218:4;1211:5;1207:16;1200:75;1147:139;812:484;;;;;1303:118;;1370:46;1408:6;1395:20;1370:46;;;1361:55;;1355:66;;;;;1428:257;;1540:2;1528:9;1519:7;1515:23;1511:32;1508:2;;;1556:1;1553;1546:12;1508:2;1591:1;1608:61;1661:7;1652:6;1641:9;1637:22;1608:61;;;1598:71;;1570:105;1502:183;;;;;1692:385;;1825:2;1813:9;1804:7;1800:23;1796:32;1793:2;;;1841:1;1838;1831:12;1793:2;1904:1;1893:9;1889:17;1876:31;1927:18;1919:6;1916:30;1913:2;;;1959:1;1956;1949:12;1913:2;1979:82;2053:7;2044:6;2033:9;2029:22;1979:82;;;1969:92;;1855:212;1787:290;;;;;2084:241;;2188:2;2176:9;2167:7;2163:23;2159:32;2156:2;;;2204:1;2201;2194:12;2156:2;2239:1;2256:53;2301:7;2292:6;2281:9;2277:22;2256:53;;;2246:63;;2218:97;2150:175;;;;;2332:132;2413:45;2452:5;2413:45;;;2408:3;2401:58;2395:69;;;2471:110;2544:31;2569:5;2544:31;;;2539:3;2532:44;2526:55;;;2588:142;2674:50;2718:5;2674:50;;;2669:3;2662:63;2656:74;;;2738:296;;2893:2;2888:3;2881:15;2930:66;2925:2;2920:3;2916:12;2909:88;3025:2;3020:3;3016:12;3009:19;;2874:160;;;;3042:110;3115:31;3140:5;3115:31;;;3110:3;3103:44;3097:55;;;3159:193;;3267:2;3256:9;3252:18;3244:26;;3281:61;3339:1;3328:9;3324:17;3315:6;3281:61;;;3238:114;;;;;3359:411;;3531:2;3520:9;3516:18;3508:26;;3545:69;3611:1;3600:9;3596:17;3587:6;3545:69;;;3625:62;3683:2;3672:9;3668:18;3659:6;3625:62;;;3698;3756:2;3745:9;3741:18;3732:6;3698:62;;;3502:268;;;;;;;3777:294;;3913:2;3902:9;3898:18;3890:26;;3927:61;3985:1;3974:9;3970:17;3961:6;3927:61;;;3999:62;4057:2;4046:9;4042:18;4033:6;3999:62;;;3884:187;;;;;;4078:219;;4199:2;4188:9;4184:18;4176:26;;4213:74;4284:1;4273:9;4269:17;4260:6;4213:74;;;4170:127;;;;;4304:387;;4485:2;4474:9;4470:18;4462:26;;4535:9;4529:4;4525:20;4521:1;4510:9;4506:17;4499:47;4560:121;4676:4;4560:121;;;4552:129;;4456:235;;;;4698:193;;4806:2;4795:9;4791:18;4783:26;;4820:61;4878:1;4867:9;4863:17;4854:6;4820:61;;;4777:114;;;;;4898:256;;4960:2;4954:9;4944:19;;4998:4;4990:6;4986:17;5097:6;5085:10;5082:22;5061:18;5049:10;5046:34;5043:62;5040:2;;;5118:1;5115;5108:12;5040:2;5138:10;5134:2;5127:22;4938:216;;;;;5161:255;;5301:18;5293:6;5290:30;5287:2;;;5333:1;5330;5323:12;5287:2;5377:4;5373:9;5366:4;5358:6;5354:17;5350:33;5342:41;;5406:4;5400;5396:15;5388:23;;5224:192;;;;5423:105;;5492:31;5517:5;5492:31;;;5481:42;;5475:53;;;;5535:128;;5615:42;5608:5;5604:54;5593:65;;5587:76;;;;5670:79;;5739:5;5728:16;;5722:27;;;;5756:105;;5825:31;5850:5;5825:31;;;5814:42;;5808:53;;;;5868:92;;5948:5;5941:13;5934:21;5923:32;;5917:43;;;;5967:79;;6036:5;6025:16;;6019:27;;;;6053:129;;6140:37;6171:5;6140:37;;;6127:50;;6121:61;;;;6189:147;;6281:50;6325:5;6281:50;;;6268:63;;6262:74;;;;6343:128;;6435:31;6460:5;6435:31;;;6422:44;;6416:55;;;;6478:121;;6557:37;6588:5;6557:37;;;6544:50;;6538:61;;;;6606:115;;6685:31;6710:5;6685:31;;;6672:44;;6666:55;;;;6729:145;6810:6;6805:3;6800;6787:30;6866:1;6857:6;6852:3;6848:16;6841:27;6780:94;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.8.0;\npragma experimental ABIEncoderV2;\n\nimport \"./IERC20.sol\";\n\ncontract Mixer {\n    /***Events***/\n    event Deposit(uint256 commitment);\n    event Mix(address tgt);\n\n    /***Fields***/\n    uint public amt;\n    IERC20 public erc20;\n\n    mapping(uint256=>bool) commitments;\n\n    /***Struct***/\n    struct DepositProof{\n        string proof;\n        address receipent;\n        //We omit the signature here  \n    }\n\n    constructor(address _erc20, uint _amt) public {\n        erc20 = IERC20(_erc20);\n        amt = _amt;\n    }\n\n    modifier onlyValidProof(DepositProof memory _proof){\n        require(_isValidProof(_proof));\n        _;\n    }\n\n    //人家可以判断出：alice释放了值为1的承诺\n    function deposit(uint256 _commitment) public {\n        require(!commitments[_commitment], \"duplicate commitment\");\n\n        commitments[_commitment] = true;\n\n        erc20.transferFrom(msg.sender, address(this), amt);        \n\n        emit Deposit(_commitment);\n\n    }\n\n    //人家可以判断出：目标转账为bob的这笔交易，消耗了值为1的承诺\n    function mix(DepositProof memory _proof) public onlyValidProof(_proof){\n        uint256 commitment = uint256(keccak256(bytes(_proof.proof)));\n        \n        commitments[commitment] = false;\n\n        erc20.transfer(_proof.receipent, amt);\n\n        emit Mix(_proof.receipent);\n    }\n\n    function _isValidProof(DepositProof memory _proof) internal view returns (bool){\n        //require(signatureValid(_proof));//Omit this...\n        string memory proof = _proof.proof;\n        uint256 commitment = uint256(keccak256(bytes(proof)));\n        return commitments[commitment];\n    }\n\n\n\n}\n",
+  "sourcePath": "E:/github/mason/SimpleMixer/contracts/Mixer.sol",
+  "ast": {
+    "absolutePath": "/E/github/mason/SimpleMixer/contracts/Mixer.sol",
+    "exportedSymbols": {
+      "Mixer": [
+        258
+      ]
+    },
+    "id": 259,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 103,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:2"
+      },
+      {
+        "id": 104,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "65:33:2"
+      },
+      {
+        "absolutePath": "/E/github/mason/SimpleMixer/contracts/IERC20.sol",
+        "file": "./IERC20.sol",
+        "id": 105,
+        "nodeType": "ImportDirective",
+        "scope": 259,
+        "sourceUnit": 69,
+        "src": "100:22:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 258,
+        "linearizedBaseContracts": [
+          258
+        ],
+        "name": "Mixer",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "*Events**",
+            "id": 109,
+            "name": "Deposit",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 108,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 107,
+                  "indexed": false,
+                  "name": "commitment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 109,
+                  "src": "178:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 106,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "178:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "177:20:2"
+            },
+            "src": "164:34:2"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 113,
+            "name": "Mix",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 111,
+                  "indexed": false,
+                  "name": "tgt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 113,
+                  "src": "213:11:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 110,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "212:13:2"
+            },
+            "src": "203:23:2"
+          },
+          {
+            "constant": false,
+            "id": 115,
+            "name": "amt",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "251:15:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 114,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "251:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 117,
+            "name": "erc20",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "272:19:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IERC20_$68",
+              "typeString": "contract IERC20"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 116,
+              "name": "IERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 68,
+              "src": "272:6:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$68",
+                "typeString": "contract IERC20"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 121,
+            "name": "commitments",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "298:34:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+              "typeString": "mapping(uint256 => bool)"
+            },
+            "typeName": {
+              "id": 120,
+              "keyType": {
+                "id": 118,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "306:7:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "298:22:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                "typeString": "mapping(uint256 => bool)"
+              },
+              "valueType": {
+                "id": 119,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "315:4:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "Mixer.DepositProof",
+            "id": 126,
+            "members": [
+              {
+                "constant": false,
+                "id": 123,
+                "name": "proof",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "387:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 122,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "387:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 125,
+                "name": "receipent",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "409:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 124,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "409:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "DepositProof",
+            "nodeType": "StructDefinition",
+            "scope": 258,
+            "src": "358:114:2",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 143,
+              "nodeType": "Block",
+              "src": "524:59:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 137,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 133,
+                      "name": "erc20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 117,
+                      "src": "534:5:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$68",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 135,
+                          "name": "_erc20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 128,
+                          "src": "549:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 134,
+                        "name": "IERC20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 68,
+                        "src": "542:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IERC20_$68_$",
+                          "typeString": "type(contract IERC20)"
+                        }
+                      },
+                      "id": 136,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "542:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$68",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "src": "534:22:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$68",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "id": 138,
+                  "nodeType": "ExpressionStatement",
+                  "src": "534:22:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 141,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 139,
+                      "name": "amt",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 115,
+                      "src": "566:3:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 140,
+                      "name": "_amt",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 130,
+                      "src": "572:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "566:10:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 142,
+                  "nodeType": "ExpressionStatement",
+                  "src": "566:10:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 144,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 131,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 128,
+                  "name": "_erc20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 144,
+                  "src": "490:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 127,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 130,
+                  "name": "_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 144,
+                  "src": "506:9:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 129,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "506:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "489:27:2"
+            },
+            "returnParameters": {
+              "id": 132,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "524:0:2"
+            },
+            "scope": 258,
+            "src": "478:105:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 155,
+              "nodeType": "Block",
+              "src": "640:58:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 150,
+                            "name": "_proof",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 146,
+                            "src": "672:6:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                              "typeString": "struct Mixer.DepositProof memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                              "typeString": "struct Mixer.DepositProof memory"
+                            }
+                          ],
+                          "id": 149,
+                          "name": "_isValidProof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 257,
+                          "src": "658:13:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_struct$_DepositProof_$126_memory_ptr_$returns$_t_bool_$",
+                            "typeString": "function (struct Mixer.DepositProof memory) view returns (bool)"
+                          }
+                        },
+                        "id": 151,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "658:21:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 148,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        276,
+                        277
+                      ],
+                      "referencedDeclaration": 276,
+                      "src": "650:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 152,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "650:30:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 153,
+                  "nodeType": "ExpressionStatement",
+                  "src": "650:30:2"
+                },
+                {
+                  "id": 154,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "690:1:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 156,
+            "name": "onlyValidProof",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 146,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 156,
+                  "src": "613:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 145,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "613:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "612:28:2"
+            },
+            "src": "589:109:2",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 190,
+              "nodeType": "Block",
+              "src": "810:223:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 165,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "828:25:2",
+                        "subExpression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 162,
+                            "name": "commitments",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 121,
+                            "src": "829:11:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                              "typeString": "mapping(uint256 => bool)"
+                            }
+                          },
+                          "id": 164,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 163,
+                            "name": "_commitment",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 158,
+                            "src": "841:11:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "829:24:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6475706c696361746520636f6d6d69746d656e74",
+                        "id": 166,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "855:22:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f830451f892a361d6f9bfa04b180568b7e3f1d5ceca9be9ca2829526e205a7",
+                          "typeString": "literal_string \"duplicate commitment\""
+                        },
+                        "value": "duplicate commitment"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f830451f892a361d6f9bfa04b180568b7e3f1d5ceca9be9ca2829526e205a7",
+                          "typeString": "literal_string \"duplicate commitment\""
+                        }
+                      ],
+                      "id": 161,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        276,
+                        277
+                      ],
+                      "referencedDeclaration": 277,
+                      "src": "820:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "820:58:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "820:58:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 173,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 169,
+                        "name": "commitments",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "889:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                          "typeString": "mapping(uint256 => bool)"
+                        }
+                      },
+                      "id": 171,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 170,
+                        "name": "_commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 158,
+                        "src": "901:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "889:24:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "74727565",
+                      "id": 172,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "916:4:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "889:31:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 174,
+                  "nodeType": "ExpressionStatement",
+                  "src": "889:31:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 178,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 273,
+                          "src": "950:3:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 179,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "950:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 181,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 290,
+                            "src": "970:4:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_Mixer_$258",
+                              "typeString": "contract Mixer"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_Mixer_$258",
+                              "typeString": "contract Mixer"
+                            }
+                          ],
+                          "id": 180,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "962:7:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 182,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "962:13:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 183,
+                        "name": "amt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 115,
+                        "src": "977:3:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 175,
+                        "name": "erc20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 117,
+                        "src": "931:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$68",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 177,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 51,
+                      "src": "931:18:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 184,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "931:50:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 185,
+                  "nodeType": "ExpressionStatement",
+                  "src": "931:50:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 187,
+                        "name": "_commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 158,
+                        "src": "1013:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 186,
+                      "name": "Deposit",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 109,
+                      "src": "1005:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 188,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1005:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 189,
+                  "nodeType": "EmitStatement",
+                  "src": "1000:25:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 191,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 159,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 158,
+                  "name": "_commitment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 191,
+                  "src": "782:19:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 157,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:21:2"
+            },
+            "returnParameters": {
+              "id": 160,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "810:0:2"
+            },
+            "scope": 258,
+            "src": "765:268:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 229,
+              "nodeType": "Block",
+              "src": "1201:212:2",
+              "statements": [
+                {
+                  "assignments": [
+                    200
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 200,
+                      "name": "commitment",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 229,
+                      "src": "1211:18:2",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 199,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1211:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 209,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 204,
+                                  "name": "_proof",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 193,
+                                  "src": "1256:6:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                                    "typeString": "struct Mixer.DepositProof memory"
+                                  }
+                                },
+                                "id": 205,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "proof",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 123,
+                                "src": "1256:12:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 203,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1250:5:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 206,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1250:19:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 202,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 267,
+                          "src": "1240:9:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 207,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1240:30:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 201,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "1232:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_uint256_$",
+                        "typeString": "type(uint256)"
+                      },
+                      "typeName": "uint256"
+                    },
+                    "id": 208,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1232:39:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1211:60:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 214,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 210,
+                        "name": "commitments",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "1290:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                          "typeString": "mapping(uint256 => bool)"
+                        }
+                      },
+                      "id": 212,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 211,
+                        "name": "commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 200,
+                        "src": "1302:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1290:23:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 213,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1316:5:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "1290:31:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 215,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1290:31:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 219,
+                          "name": "_proof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 193,
+                          "src": "1347:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                            "typeString": "struct Mixer.DepositProof memory"
+                          }
+                        },
+                        "id": 220,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "receipent",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 125,
+                        "src": "1347:16:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 221,
+                        "name": "amt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 115,
+                        "src": "1365:3:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 216,
+                        "name": "erc20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 117,
+                        "src": "1332:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$68",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 218,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 22,
+                      "src": "1332:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 222,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1332:37:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 223,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1332:37:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 225,
+                          "name": "_proof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 193,
+                          "src": "1389:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                            "typeString": "struct Mixer.DepositProof memory"
+                          }
+                        },
+                        "id": 226,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "receipent",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 125,
+                        "src": "1389:16:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 224,
+                      "name": "Mix",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 113,
+                      "src": "1385:3:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 227,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1385:21:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 228,
+                  "nodeType": "EmitStatement",
+                  "src": "1380:26:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 230,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 196,
+                    "name": "_proof",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 193,
+                    "src": "1194:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                      "typeString": "struct Mixer.DepositProof memory"
+                    }
+                  }
+                ],
+                "id": 197,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 195,
+                  "name": "onlyValidProof",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 156,
+                  "src": "1179:14:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_struct$_DepositProof_$126_memory_ptr_$",
+                    "typeString": "modifier (struct Mixer.DepositProof memory)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1179:22:2"
+              }
+            ],
+            "name": "mix",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 193,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 230,
+                  "src": "1144:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 192,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "1144:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1143:28:2"
+            },
+            "returnParameters": {
+              "id": 198,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1201:0:2"
+            },
+            "scope": 258,
+            "src": "1131:282:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 256,
+              "nodeType": "Block",
+              "src": "1498:211:2",
+              "statements": [
+                {
+                  "assignments": [
+                    238
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 238,
+                      "name": "proof",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 256,
+                      "src": "1565:19:2",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string"
+                      },
+                      "typeName": {
+                        "id": 237,
+                        "name": "string",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1565:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage_ptr",
+                          "typeString": "string"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 241,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 239,
+                      "name": "_proof",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 232,
+                      "src": "1587:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                        "typeString": "struct Mixer.DepositProof memory"
+                      }
+                    },
+                    "id": 240,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "proof",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 123,
+                    "src": "1587:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1565:34:2"
+                },
+                {
+                  "assignments": [
+                    243
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 243,
+                      "name": "commitment",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 256,
+                      "src": "1609:18:2",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 242,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1609:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 251,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 247,
+                                "name": "proof",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 238,
+                                "src": "1654:5:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 246,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1648:5:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 248,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1648:12:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 245,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 267,
+                          "src": "1638:9:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 249,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1638:23:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 244,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "1630:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_uint256_$",
+                        "typeString": "type(uint256)"
+                      },
+                      "typeName": "uint256"
+                    },
+                    "id": 250,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1630:32:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1609:53:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 252,
+                      "name": "commitments",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 121,
+                      "src": "1679:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                        "typeString": "mapping(uint256 => bool)"
+                      }
+                    },
+                    "id": 254,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 253,
+                      "name": "commitment",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 243,
+                      "src": "1691:10:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1679:23:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 236,
+                  "id": 255,
+                  "nodeType": "Return",
+                  "src": "1672:30:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 257,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_isValidProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 233,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 232,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 257,
+                  "src": "1442:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 231,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "1442:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1441:28:2"
+            },
+            "returnParameters": {
+              "id": 236,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 235,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 257,
+                  "src": "1493:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 234,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1493:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1492:6:2"
+            },
+            "scope": 258,
+            "src": "1419:290:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 259,
+        "src": "124:1590:2"
+      }
+    ],
+    "src": "32:1683:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/E/github/mason/SimpleMixer/contracts/Mixer.sol",
+    "exportedSymbols": {
+      "Mixer": [
+        258
+      ]
+    },
+    "id": 259,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 103,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:2"
+      },
+      {
+        "id": 104,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "65:33:2"
+      },
+      {
+        "absolutePath": "/E/github/mason/SimpleMixer/contracts/IERC20.sol",
+        "file": "./IERC20.sol",
+        "id": 105,
+        "nodeType": "ImportDirective",
+        "scope": 259,
+        "sourceUnit": 69,
+        "src": "100:22:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 258,
+        "linearizedBaseContracts": [
+          258
+        ],
+        "name": "Mixer",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "*Events**",
+            "id": 109,
+            "name": "Deposit",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 108,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 107,
+                  "indexed": false,
+                  "name": "commitment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 109,
+                  "src": "178:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 106,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "178:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "177:20:2"
+            },
+            "src": "164:34:2"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 113,
+            "name": "Mix",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 111,
+                  "indexed": false,
+                  "name": "tgt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 113,
+                  "src": "213:11:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 110,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "213:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "212:13:2"
+            },
+            "src": "203:23:2"
+          },
+          {
+            "constant": false,
+            "id": 115,
+            "name": "amt",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "251:15:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 114,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "251:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 117,
+            "name": "erc20",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "272:19:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IERC20_$68",
+              "typeString": "contract IERC20"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 116,
+              "name": "IERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 68,
+              "src": "272:6:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IERC20_$68",
+                "typeString": "contract IERC20"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 121,
+            "name": "commitments",
+            "nodeType": "VariableDeclaration",
+            "scope": 258,
+            "src": "298:34:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+              "typeString": "mapping(uint256 => bool)"
+            },
+            "typeName": {
+              "id": 120,
+              "keyType": {
+                "id": 118,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "306:7:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "298:22:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                "typeString": "mapping(uint256 => bool)"
+              },
+              "valueType": {
+                "id": 119,
+                "name": "bool",
+                "nodeType": "ElementaryTypeName",
+                "src": "315:4:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "Mixer.DepositProof",
+            "id": 126,
+            "members": [
+              {
+                "constant": false,
+                "id": 123,
+                "name": "proof",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "387:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 122,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "387:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 125,
+                "name": "receipent",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "409:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 124,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "409:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "DepositProof",
+            "nodeType": "StructDefinition",
+            "scope": 258,
+            "src": "358:114:2",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 143,
+              "nodeType": "Block",
+              "src": "524:59:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 137,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 133,
+                      "name": "erc20",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 117,
+                      "src": "534:5:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$68",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 135,
+                          "name": "_erc20",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 128,
+                          "src": "549:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 134,
+                        "name": "IERC20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 68,
+                        "src": "542:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_IERC20_$68_$",
+                          "typeString": "type(contract IERC20)"
+                        }
+                      },
+                      "id": 136,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "542:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IERC20_$68",
+                        "typeString": "contract IERC20"
+                      }
+                    },
+                    "src": "534:22:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IERC20_$68",
+                      "typeString": "contract IERC20"
+                    }
+                  },
+                  "id": 138,
+                  "nodeType": "ExpressionStatement",
+                  "src": "534:22:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 141,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 139,
+                      "name": "amt",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 115,
+                      "src": "566:3:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 140,
+                      "name": "_amt",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 130,
+                      "src": "572:4:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "566:10:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 142,
+                  "nodeType": "ExpressionStatement",
+                  "src": "566:10:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 144,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 131,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 128,
+                  "name": "_erc20",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 144,
+                  "src": "490:14:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 127,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "490:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 130,
+                  "name": "_amt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 144,
+                  "src": "506:9:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 129,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "506:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "489:27:2"
+            },
+            "returnParameters": {
+              "id": 132,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "524:0:2"
+            },
+            "scope": 258,
+            "src": "478:105:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 155,
+              "nodeType": "Block",
+              "src": "640:58:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 150,
+                            "name": "_proof",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 146,
+                            "src": "672:6:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                              "typeString": "struct Mixer.DepositProof memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                              "typeString": "struct Mixer.DepositProof memory"
+                            }
+                          ],
+                          "id": 149,
+                          "name": "_isValidProof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 257,
+                          "src": "658:13:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_struct$_DepositProof_$126_memory_ptr_$returns$_t_bool_$",
+                            "typeString": "function (struct Mixer.DepositProof memory) view returns (bool)"
+                          }
+                        },
+                        "id": 151,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "658:21:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 148,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        276,
+                        277
+                      ],
+                      "referencedDeclaration": 276,
+                      "src": "650:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 152,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "650:30:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 153,
+                  "nodeType": "ExpressionStatement",
+                  "src": "650:30:2"
+                },
+                {
+                  "id": 154,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "690:1:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 156,
+            "name": "onlyValidProof",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 147,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 146,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 156,
+                  "src": "613:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 145,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "613:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "612:28:2"
+            },
+            "src": "589:109:2",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 190,
+              "nodeType": "Block",
+              "src": "810:223:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 165,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "UnaryOperation",
+                        "operator": "!",
+                        "prefix": true,
+                        "src": "828:25:2",
+                        "subExpression": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 162,
+                            "name": "commitments",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 121,
+                            "src": "829:11:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                              "typeString": "mapping(uint256 => bool)"
+                            }
+                          },
+                          "id": 164,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 163,
+                            "name": "_commitment",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 158,
+                            "src": "841:11:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "829:24:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "6475706c696361746520636f6d6d69746d656e74",
+                        "id": 166,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "855:22:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f830451f892a361d6f9bfa04b180568b7e3f1d5ceca9be9ca2829526e205a7",
+                          "typeString": "literal_string \"duplicate commitment\""
+                        },
+                        "value": "duplicate commitment"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f830451f892a361d6f9bfa04b180568b7e3f1d5ceca9be9ca2829526e205a7",
+                          "typeString": "literal_string \"duplicate commitment\""
+                        }
+                      ],
+                      "id": 161,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        276,
+                        277
+                      ],
+                      "referencedDeclaration": 277,
+                      "src": "820:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 167,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "820:58:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 168,
+                  "nodeType": "ExpressionStatement",
+                  "src": "820:58:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 173,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 169,
+                        "name": "commitments",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "889:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                          "typeString": "mapping(uint256 => bool)"
+                        }
+                      },
+                      "id": 171,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 170,
+                        "name": "_commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 158,
+                        "src": "901:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "889:24:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "74727565",
+                      "id": 172,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "916:4:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "889:31:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 174,
+                  "nodeType": "ExpressionStatement",
+                  "src": "889:31:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 178,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 273,
+                          "src": "950:3:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 179,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "950:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 181,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 290,
+                            "src": "970:4:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_Mixer_$258",
+                              "typeString": "contract Mixer"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_Mixer_$258",
+                              "typeString": "contract Mixer"
+                            }
+                          ],
+                          "id": 180,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "962:7:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": "address"
+                        },
+                        "id": 182,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "962:13:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 183,
+                        "name": "amt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 115,
+                        "src": "977:3:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 175,
+                        "name": "erc20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 117,
+                        "src": "931:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$68",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 177,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferFrom",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 51,
+                      "src": "931:18:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 184,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "931:50:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 185,
+                  "nodeType": "ExpressionStatement",
+                  "src": "931:50:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 187,
+                        "name": "_commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 158,
+                        "src": "1013:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 186,
+                      "name": "Deposit",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 109,
+                      "src": "1005:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 188,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1005:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 189,
+                  "nodeType": "EmitStatement",
+                  "src": "1000:25:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 191,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 159,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 158,
+                  "name": "_commitment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 191,
+                  "src": "782:19:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 157,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "782:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "781:21:2"
+            },
+            "returnParameters": {
+              "id": 160,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "810:0:2"
+            },
+            "scope": 258,
+            "src": "765:268:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 229,
+              "nodeType": "Block",
+              "src": "1201:212:2",
+              "statements": [
+                {
+                  "assignments": [
+                    200
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 200,
+                      "name": "commitment",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 229,
+                      "src": "1211:18:2",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 199,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1211:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 209,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "id": 204,
+                                  "name": "_proof",
+                                  "nodeType": "Identifier",
+                                  "overloadedDeclarations": [],
+                                  "referencedDeclaration": 193,
+                                  "src": "1256:6:2",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                                    "typeString": "struct Mixer.DepositProof memory"
+                                  }
+                                },
+                                "id": 205,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "proof",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 123,
+                                "src": "1256:12:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 203,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1250:5:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 206,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1250:19:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 202,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 267,
+                          "src": "1240:9:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 207,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1240:30:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 201,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "1232:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_uint256_$",
+                        "typeString": "type(uint256)"
+                      },
+                      "typeName": "uint256"
+                    },
+                    "id": 208,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1232:39:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1211:60:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 214,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 210,
+                        "name": "commitments",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "1290:11:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                          "typeString": "mapping(uint256 => bool)"
+                        }
+                      },
+                      "id": 212,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 211,
+                        "name": "commitment",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 200,
+                        "src": "1302:10:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1290:23:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "66616c7365",
+                      "id": 213,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1316:5:2",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "false"
+                    },
+                    "src": "1290:31:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 215,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1290:31:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 219,
+                          "name": "_proof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 193,
+                          "src": "1347:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                            "typeString": "struct Mixer.DepositProof memory"
+                          }
+                        },
+                        "id": 220,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "receipent",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 125,
+                        "src": "1347:16:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 221,
+                        "name": "amt",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 115,
+                        "src": "1365:3:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 216,
+                        "name": "erc20",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 117,
+                        "src": "1332:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IERC20_$68",
+                          "typeString": "contract IERC20"
+                        }
+                      },
+                      "id": 218,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transfer",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 22,
+                      "src": "1332:14:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
+                        "typeString": "function (address,uint256) external returns (bool)"
+                      }
+                    },
+                    "id": 222,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1332:37:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 223,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1332:37:2"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 225,
+                          "name": "_proof",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 193,
+                          "src": "1389:6:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                            "typeString": "struct Mixer.DepositProof memory"
+                          }
+                        },
+                        "id": 226,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "receipent",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 125,
+                        "src": "1389:16:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 224,
+                      "name": "Mix",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 113,
+                      "src": "1385:3:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 227,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1385:21:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 228,
+                  "nodeType": "EmitStatement",
+                  "src": "1380:26:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 230,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 196,
+                    "name": "_proof",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 193,
+                    "src": "1194:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                      "typeString": "struct Mixer.DepositProof memory"
+                    }
+                  }
+                ],
+                "id": 197,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 195,
+                  "name": "onlyValidProof",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 156,
+                  "src": "1179:14:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_struct$_DepositProof_$126_memory_ptr_$",
+                    "typeString": "modifier (struct Mixer.DepositProof memory)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1179:22:2"
+              }
+            ],
+            "name": "mix",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 193,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 230,
+                  "src": "1144:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 192,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "1144:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1143:28:2"
+            },
+            "returnParameters": {
+              "id": 198,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1201:0:2"
+            },
+            "scope": 258,
+            "src": "1131:282:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 256,
+              "nodeType": "Block",
+              "src": "1498:211:2",
+              "statements": [
+                {
+                  "assignments": [
+                    238
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 238,
+                      "name": "proof",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 256,
+                      "src": "1565:19:2",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_string_memory_ptr",
+                        "typeString": "string"
+                      },
+                      "typeName": {
+                        "id": 237,
+                        "name": "string",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1565:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_storage_ptr",
+                          "typeString": "string"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 241,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 239,
+                      "name": "_proof",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 232,
+                      "src": "1587:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                        "typeString": "struct Mixer.DepositProof memory"
+                      }
+                    },
+                    "id": 240,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "proof",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 123,
+                    "src": "1587:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_memory",
+                      "typeString": "string memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1565:34:2"
+                },
+                {
+                  "assignments": [
+                    243
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 243,
+                      "name": "commitment",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 256,
+                      "src": "1609:18:2",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "typeName": {
+                        "id": 242,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1609:7:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 251,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 247,
+                                "name": "proof",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 238,
+                                "src": "1654:5:2",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "id": 246,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1648:5:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 248,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1648:12:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 245,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 267,
+                          "src": "1638:9:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 249,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1638:23:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      ],
+                      "id": 244,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "1630:7:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_uint256_$",
+                        "typeString": "type(uint256)"
+                      },
+                      "typeName": "uint256"
+                    },
+                    "id": 250,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1630:32:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1609:53:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 252,
+                      "name": "commitments",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 121,
+                      "src": "1679:11:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                        "typeString": "mapping(uint256 => bool)"
+                      }
+                    },
+                    "id": 254,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 253,
+                      "name": "commitment",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 243,
+                      "src": "1691:10:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1679:23:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 236,
+                  "id": 255,
+                  "nodeType": "Return",
+                  "src": "1672:30:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 257,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_isValidProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 233,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 232,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 257,
+                  "src": "1442:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_DepositProof_$126_memory_ptr",
+                    "typeString": "struct Mixer.DepositProof"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 231,
+                    "name": "DepositProof",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 126,
+                    "src": "1442:12:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_DepositProof_$126_storage_ptr",
+                      "typeString": "struct Mixer.DepositProof"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1441:28:2"
+            },
+            "returnParameters": {
+              "id": 236,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 235,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 257,
+                  "src": "1493:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 234,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1493:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1492:6:2"
+            },
+            "scope": 258,
+            "src": "1419:290:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 259,
+        "src": "124:1590:2"
+      }
+    ],
+    "src": "32:1683:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.1+commit.c8a2cb62.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-10-09T07:30:09.022Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
